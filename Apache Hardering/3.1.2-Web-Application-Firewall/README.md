@@ -2,8 +2,8 @@
 
 ## Introducción
 
-En este apartado vamos a configurar un Web Application Firewall (WAF) utilizando ModSecurity sobre un servidor Apache, y empaquetar dicha configuración en una imagen Docker.
-El WAF permitirá proteger aplicaciones web frente a ataques comunes como XSS o inyección SQL, siguiendo las reglas del OWASP Core Rule Set (CRS).
+En este apartado se configura un Web Application Firewall (WAF) utilizando ModSecurity sobre un servidor Apache, empaquetando dicha configuración en una imagen Docker.
+El WAF permite proteger aplicaciones web frente a ataques comunes como Cross-Site Scripting (XSS) o inyección SQL, siguiendo las reglas del OWASP Core Rule Set (CRS).
 
 ## Imagen base utilizada
 
@@ -17,7 +17,7 @@ A esta imagen es a la que se ha añadido ModSecurity.
 
 ## Instalación y configuración de ModSecurity
 
-Toda la configuración se ha automatizado mediante un Dockerfile, realizando las siguientes acciónes:
+Toda la configuración se ha automatizado mediante un Dockerfile, realizando las siguientes acciones:
 
 1. Instalación de paquetes
 - `libapache2-mod-security2`: módulo ModSecurity para Apache
@@ -56,7 +56,7 @@ Este archivo se copia al `document_root` de Apache (`/var/www/html`) durante la 
     docker pull pps10711933/pr2
     ```
 
-1. Ahora ejecutamos el contenedor, mapeando los puertos 80 y 443:
+1. Ahora ejecutamos el contenedor, mapeando el puerto 80:
     ```bash
     docker run -d --rm  -p 8080:80 --name PR2 pps10711933/pr2
     ```
@@ -65,7 +65,7 @@ Este archivo se copia al `document_root` de Apache (`/var/www/html`) durante la 
 
     En una terminal de Linux, ejecutaremos el siguiente comando:
     ```bash
-    curl -i -X POST -d "comentario=<script>alert(1)</script>" http://localhost:8080/post.php
+    curl -i -X POST --data-urlencode "comentario=<script>alert(1)</script>" http://localhost:8080/post.php
     ```
     ### Resultado esperado
 
