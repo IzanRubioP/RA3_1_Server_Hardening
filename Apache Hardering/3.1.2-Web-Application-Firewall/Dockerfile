@@ -1,28 +1,36 @@
 # Imagen de la actividad anterior
 FROM pps10711933/pr1
 
-#Instalar lo que necesito
-RUN apt update && apt install -y \
-    apache2 \
-    libapache2-mod-security2 \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Evitar preguntas durante la instalación
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Activar mod_security
+# Actualizar e instalar ModSecurity y CRS
+RUN apt-get update && \
+    apt-get install -y \
+    libapache2-mod-security2 \
+    modsecurity-crs && \
+    rm -rf /var/lib/apt/lists/*
+
+# Activar ModSecurity copiando el archivo recomendado
 RUN cp /etc/modsecurity/modsecurity.conf-recommended \
        /etc/modsecurity/modsecurity.conf
 
-# Asegurarnos de que lo bloquea
+# Activar el motor de ModSecurity
 RUN sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' \
     /etc/modsecurity/modsecurity.conf
 
-# Añadir regla simple
-RUN cat <<EOF >> /etc/apache2/sites-available/000-default.conf
-SecRuleEngine On
-SecRule ARGS:testparam "@contains test" "id:1234,deny,status:403,msg:'Bloqueado por mod_security'"
-EOF
+# Activar las reglas OWASP CRS
+RUN cp /usr/share/modsecurity-crs/base_rules/* \
+       /usr/share/modsecurity-crs/activated_rules/ || true
 
-# Puerto y arranque
-EXPOSE 80
+# Habilitar el módulo de seguridad en Apache
+RUN a2enmod security2
 
+# Copiar el post.php al document_root
+COPY post.php /var/www/html/post.php
+
+# Asegurar permisos correctos
+RUN chown www-data:www-data /var/www/html/post.php
+
+# Reiniciar Apache al arrancar el contenedor
 CMD ["apachectl", "-D", "FOREGROUND"]

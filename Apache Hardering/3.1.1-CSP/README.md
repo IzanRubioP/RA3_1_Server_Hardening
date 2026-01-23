@@ -1,6 +1,7 @@
 # Apartado 3.1.1 CSP
 
 ## Introducción
+
 En esta práctica se ha realizado el endurecimiento (**hardening**) de un servidor web Apache, aplicando distintas medidas de seguridad orientadas a reducir la superficie de ataque, minimizar la exposición de información sensible y proteger las comunicaciones entre cliente y servidor.
 
 Todas las medidas de seguridad se han implementado directamente durante la construcción de una imagen Docker, garantizando así que cualquier contenedor desplegado a partir de dicha imagen mantenga exactamente la misma configuración de seguridad, sin necesidad de configuraciones manuales adicionales en el sistema anfitrión.
@@ -18,6 +19,7 @@ Esto permite:
 - Utilizar la imagen como base para futuros despliegues.
 
 ## Contenido del Dockerfile
+
 ![Contenido de la imagen Dockerfile](img/Dockerfile.png)
 
 ## Instalación de Apache y dependencias
@@ -57,6 +59,7 @@ Se ha definido una política de seguridad de contenido (CSP) que restringe la ca
 Esta medida ayuda a prevenir ataques de tipo Cross-Site Scripting (XSS) y la inyección de contenido malicioso.
 
 ## Archivo default-ssl.conf
+
 ![Contenido default-ssl.conf](img/default-ssl.png)
 
 ## Parte web
@@ -71,10 +74,12 @@ Se ha creado una página simple en un archivo HTML que es la que usa Apache:
     ```bash
     docker pull pps10711933/pr1
     ```
+
 1. Ahora ejecutamos el contenedor, mapeando los puertos 80 y 443:
     ```bash
     docker run -d --rm -p 8080:80 -p 8081:443 --name PR1 pps10711933/pr1
     ```
+
 1. Comprobar que funciona
 - Acceder desde el navegador a https://localhost:8081
 - O desde terminal
@@ -83,10 +88,12 @@ Se ha creado una página simple en un archivo HTML que es la que usa Apache:
     ```bash
     curl.exe -Ik https://localhost:8081
     ```
+
     En Ubuntu
     ```bash
     curl -Ik https://localhost:8081
     ```
+    
 Se debería de ver:
 - Server: Apache (sin versión)
 - Strict-Transport-Security (HSTS activo)
