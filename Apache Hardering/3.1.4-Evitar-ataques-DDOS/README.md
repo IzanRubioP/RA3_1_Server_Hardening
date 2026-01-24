@@ -112,6 +112,7 @@ Apache Bench se ejecuta desde el sistema anfitrión para simular múltiples peti
     ```
     Apache bench nos generará un informe, aquí muestro un fragmento de este:
     ![Mostrar fragmento del informe](img/Fragmento_Informe.png)
+    
     Se puede observar el informe completo en `informeApacheBench.txt`
 
 #### Resultado del ataque DDoS
