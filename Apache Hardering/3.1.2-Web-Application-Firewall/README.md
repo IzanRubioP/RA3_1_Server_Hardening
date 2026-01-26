@@ -48,7 +48,7 @@ Este archivo se copia al `document_root` de Apache (`/var/www/html`) durante la 
 
 ![Contenido del Dockerfile](img/Dockerfile.png)
 
-## Cómo ejecutar la imagen desde Docker Hub
+## Recreación de la práctica
 
 1. Descargar la imagen desde Docker Hub:
 

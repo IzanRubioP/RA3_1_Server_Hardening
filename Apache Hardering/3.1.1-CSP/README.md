@@ -65,9 +65,10 @@ Esta medida ayuda a prevenir ataques de tipo Cross-Site Scripting (XSS) y la iny
 ## Parte web
 
 Se ha creado una página simple en un archivo HTML que es la que usa Apache:
+
 ![Contenido de index.html](img/index.png)
 
-## Cómo ejecutar la imagen desde Docker Hub
+## Recreación de la práctica
 
 1. Descargar la imagen desde Docker Hub:
 

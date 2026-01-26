@@ -72,7 +72,7 @@ Se ha creado un Dockerfile específico que hereda de PR3 y realiza la configurac
 
 ![Contenido Dockerfile](img/Dockerfile.png)
 
-## Cómo ejecutar la imagen desde Docker Hub
+## Recreación de la práctica
 
 1. Descargar la imagen desde Docker Hub:
     ```bash
