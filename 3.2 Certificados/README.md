@@ -60,6 +60,7 @@ Para recrear la actividad hay que seguir los siguientes pasos:
     ```
 
     La salida esperada:
+
     ![Verificar la redirección de HTTP](img/CurlHTTP.png)
 
     Si nos fijamos en la imagen, nos indica que la respuesta es `301 Moved Permanently` y, en `Location: https://localhost:8081/`, indica la URL a la que se va a redirigir la solicitud.
@@ -71,6 +72,7 @@ Para recrear la actividad hay que seguir los siguientes pasos:
     ```
 
     La salida esperada:
+    
     ![Verificar la conexión HTTPS](img/CurlHTTPS.png)
 
     Como se puede apreciar en la imagen, en la primera línea, nos devuelve un **200 OK** con las cabeceras `Strict-Transport-Security` y `Content-Security-Policy`, indicando:
