@@ -25,33 +25,33 @@ A esta imagen se ha añadido:
 1. Limpieza de reglas CRS de Debian
 
     Para evitar conflictos de IDs duplicados:
-    ```bash
+    ```Dockerfile
     rm -rf /usr/share/modsecurity-crs \
        /usr/share/modsecurity-crs/base_rules \
        /usr/share/modsecurity-crs/activated_rules
     ```
 1. Clonado del CRS oficial:
-    ```bash
+    ```Dockerfile
     git clone https://github.com/SpiderLabs/owasp-modsecurity-crs.git /opt/owasp-crs
     mv /opt/owasp-crs/crs-setup.conf.example /etc/modsecurity/crs-setup.conf
     mkdir -p /etc/modsecurity/rules
     cp /opt/owasp-crs/rules/*.conf /etc/modsecurity/rules/
     ```
 1. Regla personalizada de prueba:
-    ```bash
+    ```Dockerfile
     cat <<'EOF' > /etc/modsecurity/custom-rules.conf
     SecRule ARGS:testparam "@contains test" "id:1234,phase:2,deny,status:403,msg:'Cazado por Ciberseguridad'"
     EOF
     ```
 1. Activación de ModSecurity y módulos Apache:
-    ```bash
+    ```Dockerfile
     a2enmod security2 ssl
     a2ensite default-ssl
     ```
 
 ## Archivo Dockerfile
 
-Se ha creado un Dockerfile específico que hereda de PR2 y realiza la configuración anterior.
+Se ha creado un Dockerfile específico que hereda de pps10711933/pr2 y realiza la configuración anterior.
 
 ![Contenido Dockerfile](img/Dockerfile.png)
 

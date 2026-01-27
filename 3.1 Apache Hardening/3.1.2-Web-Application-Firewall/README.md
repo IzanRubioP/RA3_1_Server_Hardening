@@ -9,8 +9,8 @@ El WAF permite proteger aplicaciones web frente a ataques comunes como Cross-Sit
 
 Se parte de la imagen Docker de la actividad anterior
 
-```bash
-pps10711933/pr1
+```Dockerfile
+FROM pps10711933/pr1
 ```
 
 A esta imagen es a la que se ha añadido ModSecurity.
@@ -25,13 +25,13 @@ Toda la configuración se ha automatizado mediante un Dockerfile, realizando las
 
 2. Activación de ModSecurity
 - Se copia el archivo de configuración recomendado:
-```bash
-/etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
-```
+    ```Dockerfile
+    /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+    ```
 - Se activa el motor de reglas
-```bash
-SecRuleEngine On
-```
+    ```Dockerfile
+    SecRuleEngine On
+    ```
 3. Activación de las reglas OWASP CRS
 
     Las reglas base del OWASP CRS se activan para que ModSecurity pueda detectar ataques conocidos.

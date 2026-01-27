@@ -29,7 +29,7 @@ La instalación y configuración de `mod_evasive` se realiza íntegramente duran
 
     En el Dockerfile se instalan el módulo mod_evasive y la herramienta Apache Bench, utilizada posteriormente para realizar pruebas de carga:
 
-    ```bash
+    ```Dockerfile
     RUN apt-get update && \
     apt-get install -y \
     libapache2-mod-evasive \
@@ -42,7 +42,7 @@ La instalación y configuración de `mod_evasive` se realiza íntegramente duran
 
     Se crea el directorio donde mod_evasive almacenará los registros de las IP bloqueadas, asignándole los permisos adecuados al usuario de Apache:
 
-    ```bash
+    ```Dockerfile
     RUN mkdir -p /var/log/mod_evasive && \
     chown www-data:www-data /var/log/mod_evasive
     ```
@@ -51,7 +51,7 @@ La instalación y configuración de `mod_evasive` se realiza íntegramente duran
 
     La configuración personalizada del módulo se define en el archivo `evasive.conf`, que se copia directamente al directorio de módulos disponibles de Apache:
 
-    ```bash
+    ```Dockerfile
     COPY evasive.conf /etc/apache2/mods-available/evasive20.conf
     ```
     El contenido de **evasive.conf** es el siguiente:
@@ -61,7 +61,7 @@ La instalación y configuración de `mod_evasive` se realiza íntegramente duran
 1. Activación del módulo en Apache
 
     Finalmente, el módulo `mod_evasive` se habilita explícitamente durante la construcción de la imagen:
-    ```bash
+    ```Dockerfile
     RUN a2enmod evasive
     ```
     De esta forma, el módulo queda activo automáticamente cada vez que se ejecuta el contenedor.
@@ -113,7 +113,7 @@ Apache Bench se ejecuta desde el sistema anfitrión para simular múltiples peti
     Apache bench nos generará un informe, aquí muestro un fragmento de este:
     ![Mostrar fragmento del informe](img/Fragmento_Informe.png)
     
-    Se puede observar el informe completo en `informeApacheBench.txt`
+    Se puede observar el informe completo en informeApacheBench.txt
 
 #### Resultado del ataque DDoS
 Durante la ejecución de la prueba, Apache comienza a rechazar peticiones devolviendo errores 403 Forbidden, lo que confirma que mod_evasive detecta el comportamiento anómalo y bloquea la dirección IP atacante.

@@ -8,7 +8,7 @@ Todas las medidas de seguridad se han implementado directamente durante la const
 
 Este enfoque sigue los principios de **mínimo privilegio**, **mínima exposición** y **reproducibilidad**, y complementa la seguridad perimetral proporcionada por el firewall y la correcta gestión de usuarios y permisos.
 
-## Uso de Docker como base del hardering
+## Uso de Docker como base del hardening
 
 El hardening del servidor se ha realizado utilizando Docker, de manera que toda la
 configuración de seguridad queda integrada en la propia imagen.
