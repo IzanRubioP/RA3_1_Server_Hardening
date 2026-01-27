@@ -38,8 +38,37 @@ El archivo Dockerfile parte de la imagen pps10711933/pr6 de la práctica anterio
     COPY conf/directory-security.conf /etc/apache2/conf-available/directory-security.conf
     ```
 
+    ### Archivos de configuración:
+
+    ### 2.1. hardening.conf
+
+    ![Archivo de configuración hardening](img/hardening_conf.png)
+
+    - Oculta información del servidor (ServerTokens Prod, ServerSignature Off).
+    - Configura límites de directorios y permisos básicos.
+    - Bloquea métodos HTTP inseguros (PUT, DELETE, TRACE).
+    
+    ### 2.2. security-headers.conf
+
+    ![Archivo de configuración security-headers](img/Security_Headers.png)
+
+    - Añade cabeceras de seguridad HTTP:
+        - Strict-Transport-Security (HSTS)
+        - Content-Security-Policy (CSP)
+        - X-Frame-Options
+        - X-XSS-Protection
+    - Refuerza la protección frente a ataques XSS, clickjacking y sniffing de tráfico.
+    
+    ### 2.3. directory-security.conf
+
+    ![Archivo de configuración directory-security](img/Directory_Security.png)
+
+        - Controla permisos y opciones de directorios (Options -Indexes, AllowOverride None).
+        - Evita listado de directorios y posibles sobrescrituras de configuración mediante .htaccess.
+
+
     - Externalizamos toda la configuración de seguridad en archivos `.conf`.
-    - Facilitamos modificaciones futuras sin tocar el Dockerfile
+    - Facilitamos modificaciones futuras sin tocar el Dockerfile.
 
 1. Habilitar configuraciones y módulos de seguridad:
     ```Dockerfile
