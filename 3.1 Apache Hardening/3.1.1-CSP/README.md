@@ -83,19 +83,19 @@ Se ha creado una página simple en un archivo HTML que es la que usa Apache:
 
 1. Comprobar que funciona
 - Acceder desde el navegador a https://localhost:8081
-- O desde terminal
+- O desde la terminal
 
-    En Windows(CMD o PowerShell):
+    En Windows (CMD o PowerShell):
     ```bash
     curl.exe -Ik https://localhost:8081
     ```
 
-    En Ubuntu
+    En Ubuntu:
     ```bash
     curl -Ik https://localhost:8081
     ```
     
-Se debería de ver:
+Se debería ver:
 - Server: Apache (sin versión)
 - Strict-Transport-Security (HSTS activo)
 - Content-Security-Policy como en la guía

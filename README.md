@@ -1,6 +1,6 @@
 # Apache Hardening – RA3.1
 
-En este repositorio se encuentra la actividad **RA3.1 Apache Hardening** de **Puesta en Producción Segura** realizada por el alumno **Izan Rubio Palau**, todas las prácticas se han realizado utilizando contenedores Docker, las imagenes se encuentran públicas en pps10711933.
+En este repositorio se encuentra la actividad **RA3.1 Apache Hardening** de **Puesta en Producción Segura** realizada por el alumno **Izan Rubio Palau**, todas las prácticas se han realizado utilizando contenedores Docker, las imágenes se encuentran públicas en pps10711933.
 
 ## 3.1 Apache Hardening
 

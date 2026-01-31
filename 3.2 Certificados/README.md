@@ -6,7 +6,7 @@ En esta práctica vamos a configurar un servidor Apache dentro de un contenedor 
 - Todo el tráfico HTTP sea redirigido automáticamente a HTTPS.
 - El tráfico HTTPS esté protegido con un certificado SSL autofirmado.
 - Se implementen políticas de seguridad adicionales como HSTS y CSP.
-La práctica se basa en la actividad 3.1.4-Evitar-ataques-DDOS, anteriormente, en el apartado 3.1.1-CSP ya creamos el certificado SSL autofirmado y configuramos HSTS y CSP en un VirtualHost de Apache, por lo que ahora lo nuevo que he implementado ha sido la redirección de http a https.
+La práctica se basa en la actividad 3.1.4-Evitar-ataques-DDOS, anteriormente, en el apartado 3.1.1-CSP ya creamos el certificado SSL autofirmado y configuramos HSTS y CSP en un VirtualHost de Apache, por lo que ahora lo nuevo que he implementado ha sido la redirección de HTTP a HTTPS.
 
 ## Archivo Dockerfile
 El archivo Dockerfile parte de la imagen pps10711933/pr4 de la práctica anterior:
@@ -23,7 +23,7 @@ Como se puede observar, tenemos 3 secciones:
 
 Este archivo contiene el VirtualHost que redirige todo el tráfico HTTP al puerto HTTPS mapeado en Docker:
 
-![Contenido Dockerfile](img/RedirecciónHTTP-HTTPS.png)
+![Contenido del VirtualHost de redirección](img/RedirecciónHTTP-HTTPS.png)
 
 #### Explicación:
 

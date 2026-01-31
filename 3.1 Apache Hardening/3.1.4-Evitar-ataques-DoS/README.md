@@ -1,4 +1,4 @@
-# Apartado 3.1.4 Evitar ataques DDOS
+# Apartado 3.1.4 Evitar ataques DoS
 
 ## Introducción
 
@@ -9,7 +9,7 @@ La solución se integra en una imagen Docker, permitiendo un despliegue rápido 
 
 ## Imagen base utilizada
 
-Se parte de la imagen Docker de la actividad anterior
+Se parte de la imagen Docker de la actividad anterior:
 
 ```bash
 pps10711933/pr3
@@ -87,7 +87,7 @@ Se ha creado un Dockerfile específico que hereda de PR3 y realiza la configurac
     curl http://localhost:8080
     ```
 
-### Prueba de mitigación DDos con Apache Bench
+### Prueba de mitigación DoS con Apache Bench
 
 Para verificar que el módulo mod_evasive bloquea peticiones masivas, se ha utilizado Apache Bench.
 
@@ -110,12 +110,12 @@ Apache Bench se ejecuta desde el sistema anfitrión para simular múltiples peti
     ```bash
     ab -n 3000 -c 50 http://localhost:8080/
     ```
-    Apache bench nos generará un informe, aquí muestro un fragmento de este:
+    Apache Bench nos generará un informe, aquí muestro un fragmento de este:
     ![Mostrar fragmento del informe](img/Fragmento_Informe.png)
     
     Se puede observar el informe completo en informeApacheBench.txt
 
-#### Resultado del ataque DDoS
+#### Resultado del ataque DoS
 Durante la ejecución de la prueba, Apache comienza a rechazar peticiones devolviendo errores 403 Forbidden, lo que confirma que mod_evasive detecta el comportamiento anómalo y bloquea la dirección IP atacante.
 
 ## Conclusión

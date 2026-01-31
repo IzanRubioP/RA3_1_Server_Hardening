@@ -8,7 +8,7 @@ El WAF permite detectar y bloquear ataques web comunes, como XSS, inyección SQL
 
 ## Imagen base utilizada
 
-Se parte de la imagen Docker de la actividad anterior
+Se parte de la imagen Docker de la actividad anterior:
 
 ```bash
 pps10711933/pr2
@@ -57,7 +57,7 @@ Se ha creado un Dockerfile específico que hereda de pps10711933/pr2 y realiza l
 
 ## Recreación de la práctica
 
-1. Construir la imagen localmente:
+1. Descargar la imagen desde Docker Hub:
     ```bash
     docker pull pps10711933/pr3
     ```
@@ -70,7 +70,8 @@ Se ha creado un Dockerfile específico que hereda de pps10711933/pr2 y realiza l
     curl -k "https://localhost:8081/index.html?testparam=test"
     ```
 - Resultado esperado: **403 Forbidden**, confirmando que ModSecurity intercepta la petición.
-![403 Forbidden](img/CurlReglaPersonalizada.png)
+
+    ![403 Forbidden](img/CurlReglaPersonalizada.png)
 
 ## Conclusión
 

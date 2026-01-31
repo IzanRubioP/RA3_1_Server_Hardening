@@ -63,10 +63,8 @@ El archivo Dockerfile parte de la imagen pps10711933/pr6 de la práctica anterio
 
     ![Archivo de configuración directory-security](img/Directory_Security.png)
 
-        - Controla permisos y opciones de directorios (Options -Indexes, AllowOverride None).
-        - Evita listado de directorios y posibles sobrescrituras de configuración mediante .htaccess.
-
-
+    - Controla permisos y opciones de directorios (Options -Indexes, AllowOverride None).
+    - Evita listado de directorios y posibles sobrescrituras de configuración mediante .htaccess.
     - Externalizamos toda la configuración de seguridad en archivos `.conf`.
     - Facilitamos modificaciones futuras sin tocar el Dockerfile.
 
@@ -112,7 +110,7 @@ Para recrear la actividad hay que seguir los siguientes pasos:
 
     - La respuesta `301 Moved Permanently` indica que todas las solicitudes HTTP se redirigen automáticamente a HTTPS.
     - El header `Location` indica la URL de destino de la redirección.
-    - Esta redirección fue configurada en una práctica anterior, mantenindose activa en esta imagen.
+    - Esta redirección fue configurada en una práctica anterior, manteniéndose activa en esta imagen.
 
 1. Verificar la conexión HTTPS y los headers de seguridad:
     ```bash
